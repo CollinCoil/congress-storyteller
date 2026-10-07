@@ -1,0 +1,13 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+
+# R
+.Rhistory
+.RData
+Rplots.pdf
+
+# Office lock files and manuscript drafts
+~$*
+*.docx

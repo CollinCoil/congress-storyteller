@@ -1,0 +1,43 @@
+[project]
+name = "congressional-storyteller"
+version = "0.1.0"
+description = "Replication code and data for \"The Story Behind the Statute: Congressional Witnesses as Narrative Agents and Storytellers\"."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Collin Coil", email = "collin.a.coil@gmail.com" }]
+# gensim 4.3.3 and numpy 1.26.4 publish wheels only up to Python 3.12.
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "gensim==4.3.3",
+    "matplotlib==3.10.1",
+    "nltk==3.9.1",
+    "numpy==1.26.4",
+    "openpyxl==3.1.5",
+    "pandas==2.2.3",
+    "scikit-learn==1.6.1",
+    "scipy==1.13.1",
+    "seaborn==0.13.2",
+    "sentence-transformers==4.1.0",
+    "stanza==1.10.1",
+    "torch==2.6.0",
+    "tqdm==4.67.1",
+    # Qwen3-Embedding-4B requires transformers>=4.51.
+    "transformers==4.51.1",
+]
+
+[project.urls]
+Repository = "https://github.com/CollinCoil/congressional-storyteller"
+
+[tool.uv]
+# This repository is a collection of analysis scripts, not an installable package.
+package = false
+
+# Install the CUDA 11.8 build of PyTorch on Windows and Linux (it also runs on CPU-only
+# machines). macOS uses the standard PyPI build.
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
